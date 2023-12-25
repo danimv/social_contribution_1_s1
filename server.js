@@ -35,6 +35,10 @@ require("./config/passport")(passport);
 app.use("/api/users", users);
 app.use("/api/posts", posts);
 app.use("/api/profile", profile);
+app.get('/', (req, res) => {
+  console.log("home");
+  res.send('Server is running');
+});
 
 // serve static assets if in production mode
 
