@@ -10,9 +10,10 @@ const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
 const posts = require("./routes/api/posts");
 
-app.use(cors());
+
 // app init
 const app = express();
+app.use(cors());
 
 // body-parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
