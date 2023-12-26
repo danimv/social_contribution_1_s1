@@ -74,7 +74,7 @@ const init = async (collectionName, data, model) => {
 
 const initDB = async () => {
   try {
-    mongoose.model('post', Post.schema);
+    mongoose.model('posts', Post.schema);
     await init('contribtypes', contribType, contribTypeModel);
     await init('posts', contrib, Post);
   } catch (error) {
