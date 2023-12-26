@@ -33,7 +33,11 @@ const database = "mongodb+srv://danimv87:dmv879731@foodup.xfpdje1.mongodb.net/co
 
 // connect to database
 mongoose
-  .connect(database)
+  .connect(database, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    // additional options if needed
+  })
   .then(() => console.log("connected to MongoDB"))
   .catch(err => console.log("db connection error"));
 
