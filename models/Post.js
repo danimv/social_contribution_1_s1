@@ -14,6 +14,21 @@ const PostSchema = new Schema({
   name: {
     type: String
   },
+  lloc: {
+    type: String
+  },
+  tipus: {
+    type: String
+  },
+  quantitat: {
+    type: String
+  },
+  unitat: {
+    type: String
+  },
+  imageName: {
+    type: String
+  },
   imgUrl: {
     type: String
   },
