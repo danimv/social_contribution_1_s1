@@ -8,11 +8,6 @@ module.exports = function validateProfileInput(data) {
     errors.status = 'La pronvicia és necessària';
   }
 
-  if (!isEmpty(data.website)) {
-    if (!Validator.isURL(data.website)) {
-      errors.website = 'Not a valid URL';
-    }
-  }
   if (!isEmpty(data.youtube)) {
     if (!Validator.isURL(data.youtube)) {
       errors.youtube = 'Not a valid URL';

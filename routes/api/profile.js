@@ -40,7 +40,7 @@ router.get('/all', (req, res) => {
     .populate('user', ['name', 'imgUrl'])
     .then((profiles) => {
       if (!profiles) {
-        errors.noprofile = 'There are no profiles';
+        errors.noprofile = 'No hi ha usuaris';
         return res.status(404).json(errors);
       }
       res.json(profiles);
@@ -52,9 +52,9 @@ router.get('/all', (req, res) => {
 // Get profile by handle
 // @access public
 
-router.get('/handle/:handle', (req, res) => {
+router.get('/id/:id', (req, res) => {
   const errors = {};
-  Profile.findOne({ handle: req.params.handle })
+  Profile.findOne({ _id: req.params.id })  // Change 'id' to '_id'
     .populate('user', ['name', 'imgUrl'])
     .then((profile) => {
       if (!profile) {
@@ -65,6 +65,7 @@ router.get('/handle/:handle', (req, res) => {
     })
     .catch((err) => res.status(404).json(err));
 });
+
 
 // GET api/profile/user/:user_id
 // Get profile by user ID
