@@ -13,7 +13,10 @@ const posts = require("./routes/api/posts");
 
 // app init
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: true,
+  credentials: true,  // Enable credentials (cookies, HTTP authentication) for cross-origin requests
+}));
 
 // body-parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
