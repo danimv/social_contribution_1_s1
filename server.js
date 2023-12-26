@@ -17,7 +17,16 @@ app.use(cors({
   origin: true,
   credentials: true,  // Enable credentials (cookies, HTTP authentication) for cross-origin requests
 }));
-app.use(express.json({ limit: "10mb" }));
+app.use(express.json());
+app.use(
+  cors({
+    origin: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+  })
+);
+app.options('*', cors());
 
 // body-parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
