@@ -6,6 +6,6 @@ const contribDataSchema = new mongoose.Schema({
   unit: String
 });
 
-const contribTypesModel = mongoose.model("contribtypes", contribDataSchema);
+const contribTypeModel = mongoose.model("contribtypes", contribDataSchema);
 
-module.exports = contribTypesModel;
+module.exports = contribTypeModel;

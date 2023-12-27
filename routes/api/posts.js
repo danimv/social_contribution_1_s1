@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
+const contribType = require('../../models/contribType');
 
 // get Post model
 const Post = require("../../models/Post");
@@ -11,6 +12,16 @@ const Profile = require("../../models/Profile");
 
 // Validation
 const ValidatePostInput = require("../../validation/post");
+
+
+router.get('/contribtypes', async (_req, res) => {
+  try {
+    const contribtypes = await contribType.find({});
+    res.send(contribtypes);
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 // GET api/posts
 // get posts
@@ -53,7 +64,10 @@ router.post(
     const newPost = new Post({
       text: req.body.text,
       name: req.body.name,
-      user: req.user.id
+      user: req.user.id,
+      quantitat: req.body.quantitat,
+      tipus: req.body.tipus,
+      unitat: req.body.unitat,
     });
 
     newPost.save().then(posts => res.json(posts));
