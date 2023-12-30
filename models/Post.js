@@ -26,10 +26,16 @@ const PostSchema = new Schema({
   unitat: {
     type: String
   },
-  imageName: {
+    hora: {
+    type: String
+  },
+  data: {
     type: String
   },
   imgUrl: {
+    type: String
+  },
+  imageName: {
     type: String
   },
   likes: [
