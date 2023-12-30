@@ -16,9 +16,12 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage, limits: {
-  fileSize: 1024 * 1024 * 35, // 5 MB limit (adjust as needed)
-},});
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 35, // 5 MB limit (adjust as needed)
+  },
+});
 
 router.get('/contribtypes', async (_req, res) => {
   try {
@@ -59,23 +62,28 @@ router.post('/', passport.authenticate('jwt', { session: false }), upload.single
   // if (!isValid) {
   //   return res.status(400).json(errors);
   // }
-  console.log("bodyyy", req.body);
-  console.log("fileeeee",req.file);
   try {
-     const newPost = new Post({
-      text: req.body.description,
-      name: req.body.name,
-      user: req.user.id,
-      quantitat: req.body.quantitat,
-      tipus: req.body.tipus,
-      unitat: req.body.unitat,
-      lloc: req.body.lloc,
-      hora: req.body.hora,
-      data: req.body.data,
-      imgUrl: req.file.filename,
-      imageName: req.file.filename,
-    });
-    newPost.save().then((posts) => res.json(posts));
+    console.log(req.body);
+    if (req.file && req.file.filename) {
+      console.log(req.file.filename);
+      const newPost = new Post({
+        text: req.body.description,
+        name: req.body.name,
+        user: req.user.id,
+        quantitat: req.body.quantitat,
+        tipus: req.body.tipus,
+        unitat: req.body.unitat,
+        lloc: req.body.lloc,
+        hora: req.body.hora,
+        data: req.body.data,
+        imgUrl: req.file.filename,
+        imageName: req.file.filename,
+      });
+      newPost.save().then((posts) => res.json(posts));
+    } else {
+      // Handle the case where the file is not provided or not uploaded
+      console.log('File not provided or uploaded.');
+    }
   } catch (err) {
     console.log(err);
   }
