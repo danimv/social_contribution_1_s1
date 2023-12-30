@@ -6,22 +6,22 @@ const contribType = [
   {
     name: 'Transport',
     description: 'Indica els kilometres realitzats',
-    unit: 'Kilometre',
+    unit: 'Kilometres',
   },
   {
     name: 'Reciclar',
     description: 'Indica la quantitat de material reciclat',
-    unit: 'Kilogram',
+    unit: 'Kilograms',
   },
   {
     name: 'Aigua',
     description: 'Indica els litres consumits',
-    unit: 'Litre',
+    unit: 'Litres',
   },
   {
     name: 'Electricitat',
     description: 'Indica els Watts consumits',
-    unit: 'Watt',
+    unit: 'Watts',
   },
 ];
 
