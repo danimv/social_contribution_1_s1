@@ -104,7 +104,8 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 router.get('/stats', passport.authenticate('jwt', { session: false }), async (req, res) => {
   try {
     const countsByTipus = await getCountOfPostsByTipus(req.user.id);
-    console.log('counting...', req.user.id, countsByTipus);
+    console.log(countsByTipus);
+    res.json(countsByTipus);
   } catch (error) {
     console.error('Error:', error);
   }
