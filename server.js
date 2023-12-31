@@ -59,7 +59,7 @@ app.use(
   })
 );
 app.options('*', cors());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'build')));
 // routes
 app.use('/api/users', users);
 app.use('/api/posts', posts);
@@ -76,7 +76,7 @@ app.get('/public/uploads/:filename', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 // serve static assets if in production mode
