@@ -7,7 +7,6 @@ const Post = require('../../models/Post');
 const Profile = require('../../models/Profile');
 const ValidatePostInput = require('../../validation/post');
 const multer = require('multer');
-const { getCountOfPostsByTipus } = require('../../stats/statsActions');
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'public/uploads/'); // Set your desired destination directory

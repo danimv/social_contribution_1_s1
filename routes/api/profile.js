@@ -18,7 +18,7 @@ const User = require('../../models/User');
 // @access: private
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
   const errors = {};
-  console.log('Received Token:', req.headers.authorization);
+  // console.log('Received Token:', req.headers.authorization);
   Profile.findOne({ user: req.user.id })
     .populate('user', ['name', 'imgUrl'])
     .then((profile) => {
