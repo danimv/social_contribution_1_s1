@@ -7,6 +7,7 @@ const Post = require('../../models/Post');
 const Profile = require('../../models/Profile');
 const ValidatePostInput = require('../../validation/post');
 const multer = require('multer');
+const { getCountOfPostsByTipus } = require('../../stats/statsActions');
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'public/uploads/'); // Set your desired destination directory
@@ -51,6 +52,15 @@ router.get('/:id', (req, res) => {
   Post.findById(req.params.id)
     .then((post) => res.json(post))
     .catch((err) => res.status(404).json({ nopostfound: 'No post found with that ID' }));
+});
+
+// GET api/posts/a
+// get posts by id
+// @access public
+router.get('/a', async (req, res) => {
+  const userId = req.user.id;
+  const countsByTipus = await getCountOfPostsByTipus(userId);
+  console.log("counting...",userId,countsByTipus)
 });
 
 // POST api/posts
