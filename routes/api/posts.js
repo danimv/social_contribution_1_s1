@@ -54,15 +54,6 @@ router.get('/:id', (req, res) => {
     .catch((err) => res.status(404).json({ nopostfound: 'No post found with that ID' }));
 });
 
-// GET api/posts/a
-// get posts by id
-// @access public
-router.get('/a', async (req, res) => {
-  const userId = req.user.id;
-  const countsByTipus = await getCountOfPostsByTipus(userId);
-  console.log("counting...",userId,countsByTipus)
-});
-
 // POST api/posts
 // create post
 // @access private

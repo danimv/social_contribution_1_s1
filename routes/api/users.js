@@ -104,4 +104,13 @@ router.get(
   }
 );
 
+// GET api/posts/a
+// get posts by id
+// @access public
+router.get('/stats', async (req, res) => {
+  const userId = req.user.id;
+  const countsByTipus = await getCountOfPostsByTipus(userId);
+  console.log("counting...",userId,countsByTipus)
+});
+
 module.exports = router;
